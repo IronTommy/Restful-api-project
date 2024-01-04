@@ -61,6 +61,7 @@ public class TaskControllerTest {
     @Test
     public void testGetById() {
         given()
+                .auth().basic("user", "password")
                 .when()
                 .get("/api/tasks/{id}", createdTaskId)
                 .then()
@@ -81,6 +82,7 @@ public class TaskControllerTest {
         taskDTO.setCompleted(false);
 
         given()
+                .auth().basic("user", "password")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(taskDTO)
                 .when()
@@ -94,6 +96,7 @@ public class TaskControllerTest {
     @Test
     public void testDeleteById() {
         given()
+                .auth().basic("user", "password")
                 .when()
                 .delete("/api/tasks/{id}", createdTaskId)
                 .then()
