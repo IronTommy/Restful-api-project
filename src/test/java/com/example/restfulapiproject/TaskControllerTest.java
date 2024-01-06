@@ -68,7 +68,7 @@ public class TaskControllerTest {
                 .log().all()
                 .statusCode(200)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .body("id", equalTo(createdTaskId.intValue()))
+                .body("id", equalTo(createdTaskId))
                 .body("title", equalTo("Test Task"))
                 .body("description", equalTo("Test Description"))
                 .body("completed", equalTo(false));
