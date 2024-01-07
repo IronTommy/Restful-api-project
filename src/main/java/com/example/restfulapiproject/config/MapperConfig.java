@@ -11,4 +11,5 @@ public class MapperConfig {
     public TaskMapper taskMapper() {
         return TaskMapper.INSTANCE;
     }
+
 }

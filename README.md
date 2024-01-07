@@ -41,10 +41,11 @@
 - **Удаление задачи по ID:**
   - Endpoint: `/api/tasks/{id}`
   - HTTP-метод: DELETE
-  - Пример запроса: `curl -X DELETE http://localhost:8080/api/tasks/1`
+  - Пример запроса: `curl -X DELETE http://localhost:8080/api/tasks/1` 
 
 ## Дополнительные возможности
 
 - Аутентификация (опционально)
 - Деплой на внешний сервер (опционально)
+
 

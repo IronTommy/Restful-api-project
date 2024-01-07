@@ -9,4 +9,5 @@ public class RestfulApiProjectApplication {
     public static void main(String[] args) {
         SpringApplication.run(RestfulApiProjectApplication.class, args);
     }
+
 }
