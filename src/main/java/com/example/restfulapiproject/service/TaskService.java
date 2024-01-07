@@ -8,4 +8,5 @@ public interface TaskService {
     TaskDTO createOrUpdate(TaskDTO taskDTO);
 
     void deleteById(Long id);
+
 }

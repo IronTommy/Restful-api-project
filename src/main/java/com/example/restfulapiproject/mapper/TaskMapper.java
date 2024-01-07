@@ -6,8 +6,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Mapper
 @Component
 public interface TaskMapper {
@@ -18,5 +16,5 @@ public interface TaskMapper {
 
     Task toEntity(TaskDTO taskDTO);
 
-    List<TaskDTO> toDTOList(List<Task> tasks);
+
 }
