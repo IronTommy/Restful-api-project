@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
+import org.springframework.transaction.annotation.Transactional;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -25,6 +26,7 @@ public class TaskControllerTest {
     }
 
     @BeforeEach
+    @Transactional(readOnly = true)
     public void setUp() {
         RestAssured.port = randomServerPort;
 
@@ -45,10 +47,10 @@ public class TaskControllerTest {
                 .body("id", notNullValue())
                 .extract()
                 .path("id");
-
     }
 
     @AfterEach
+    @Transactional
     public void tearDown() {
         // Удаление созданной задачи после выполнения теста
         given()
@@ -59,6 +61,7 @@ public class TaskControllerTest {
     }
 
     @Test
+    @Transactional(readOnly = true)
     public void testGetById() {
         given()
                 .when()
@@ -67,13 +70,14 @@ public class TaskControllerTest {
                 .log().all()
                 .statusCode(200)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .body("id", equalTo(createdTaskId.intValue()))
+                .body("id", equalTo(createdTaskId))
                 .body("title", equalTo("Test Task"))
                 .body("description", equalTo("Test Description"))
                 .body("completed", equalTo(false));
     }
 
     @Test
+    @Transactional(readOnly = true)
     public void testCreateOrUpdate() {
         TaskDTO taskDTO = new TaskDTO();
         taskDTO.setTitle("Sample Title");
@@ -92,6 +96,7 @@ public class TaskControllerTest {
     }
 
     @Test
+    @Transactional
     public void testDeleteById() {
         given()
                 .when()

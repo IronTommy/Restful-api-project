@@ -5,8 +5,6 @@ import com.example.restfulapiproject.model.dto.TaskDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Objects;
-
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
@@ -25,9 +23,6 @@ public class TaskController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public TaskDTO createOrUpdate(@RequestBody TaskDTO taskDTO) {
-        if (Objects.nonNull(taskDTO.getId())) {
-            getById(taskDTO.getId());
-        }
         return taskFacade.createOrUpdate(taskDTO);
     }
 
